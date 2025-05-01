@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     crackShiftDisplay.textContent = '(Shift Tried: -)';
     outputTextDiv.textContent = '(Output will appear here)';
 
-    // ✅ Add draggable wheel
+    // ✅ Add draggable wheel with snapping
     let isDragging = false;
     let startAngle = 0;
     let currentRotation = 0;
@@ -275,7 +275,13 @@ document.addEventListener('DOMContentLoaded', () => {
     svg.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const angle = getMouseAngle(e);
-        currentRotation = angle - startAngle;
+        let rawRotation = angle - startAngle;
+
+        // Snap to 26 steps → 360° / 26 ≈ 13.846°
+        const step = 360 / 26;
+        const snappedRotation = Math.round(rawRotation / step) * step;
+
+        currentRotation = snappedRotation;
         innerWheelGroup.style.transform = `rotate(${currentRotation}deg)`;
     });
 

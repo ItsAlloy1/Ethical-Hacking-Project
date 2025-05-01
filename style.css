@@ -261,3 +261,16 @@ canvas#frequencyChart {
     max-width: 700px;
 }
   
+#cipherWheel text {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+#cipherWheel {
+    cursor: grab;
+}
+
+#cipherWheel:active {
+    cursor: grabbing;
+}
