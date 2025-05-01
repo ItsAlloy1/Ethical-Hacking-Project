@@ -11,31 +11,11 @@
   <div class="cipher-lab">
     <header class="header">
       <h1>Caesar Cipher Wheel</h1>
-      <select id="cipherType" style="display: none;">
-        <option value="caesar" selected>Caesar Cipher</option>
-      </select>
     </header>
 
     <main class="main-content">
       <div class="input-params-area">
-        <div class="input-group">
-          <label for="inputText">Input (Ciphertext to Crack):</label>
-          <input type="text" id="inputText" placeholder="Enter text (e.g., KHOOR)" />
-        </div>
-        <div class="input-group" id="caesarParams">
-          <label for="shiftValue">Shift (for Encrypt):</label>
-          <div class="shift-control">
-            <button id="shiftDown">←</button>
-            <input type="number" id="shiftValue" value="3" min="-25" max="25" />
-            <button id="shiftUp">→</button>
-            <input type="checkbox" id="preserveCaseCheckbox" checked />
-            <label for="preserveCaseCheckbox">Preserve letter case</label>
-          </div>
-        </div>
-        <button id="applyButton">Apply Cipher</button>
-        <button id="crackButton">Try Cracking</button>
-        <button id="generateChallengeButton">Generate Random Cipher</button>
-        <button id="freqCrackButton">Crack by Frequency</button>
+        <!-- (keep this section as you had it) -->
       </div>
 
       <div class="output-area">
@@ -46,16 +26,20 @@
             <defs>
               <path id="outerCirclePath" d="M 150, 150 m -125, 0 a 125,125 0 1,1 250,0 a 125,125 0 1,1 -250,0" fill="none"/>
             </defs>
-            <text id="outerText" font-size="16" font-family="monospace">
-              <textPath xlink:href="#outerCirclePath">ABCDEFGHIJKLMNOPQRSTUVWXYZ</textPath>
+            <text id="outerText" font-size="18" font-family="monospace">
+              <textPath xlink:href="#outerCirclePath" textLength="780" lengthAdjust="spacingAndGlyphs">
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ
+              </textPath>
             </text>
             <g id="innerWheelGroup">
               <circle cx="150" cy="150" r="100" fill="none" stroke="#eee" stroke-width="1"/>
               <defs>
-                <path id="innerCirclePath" d="M 150, 150 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" fill="none"/>
+                <path id="innerCirclePath" d="M 150, 150 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none"/>
               </defs>
-              <text id="innerText" font-size="16" font-family="monospace">
-                <textPath xlink:href="#innerCirclePath">abcdefghijklmnopqrstuvwxyz</textPath>
+              <text id="innerText" font-size="18" font-family="monospace">
+                <textPath xlink:href="#innerCirclePath" textLength="530" lengthAdjust="spacingAndGlyphs">
+                  abcdefghijklmnopqrstuvwxyz
+                </textPath>
               </text>
             </g>
           </svg>
@@ -69,7 +53,6 @@
         </div>
       </div>
 
-      <!-- ✅ NEW frequency-area wrapper -->
       <div class="frequency-area">
         <h3>Frequency Analysis</h3>
         <canvas id="frequencyChart" width="500" height="300"></canvas>

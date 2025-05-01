@@ -140,11 +140,6 @@ body {
     overflow: visible;
   }
   
-  #outerText textPath,
-  #innerText textPath {
-    letter-spacing: 7px; /* Adjust this value until text fits */
-  }
-  
   /* Color Styling */
   #outerText {
     fill: blue;
