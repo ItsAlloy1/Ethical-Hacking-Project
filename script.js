@@ -33,7 +33,7 @@ function giveFeedback(userAttempt) {
     const cleanedAnswer = currentChallenge.replace(/[^A-Za-z]/gi, '').toUpperCase();
 
     if (cleanedAttempt === cleanedAnswer) {
-        return "You cracked it!";
+        return "🎉 You cracked it!";
     }
 
     let matchCount = 0;
@@ -45,9 +45,9 @@ function giveFeedback(userAttempt) {
 
     const accuracy = matchCount / cleanedAnswer.length;
 
-    if (accuracy > 0.7) return "You're getting close!";
-    if (accuracy > 0.4) return "Not quite right...";
-    return "Keep trying!";
+    if (accuracy > 0.7) return "🔥 You're getting close!";
+    if (accuracy > 0.4) return "🙂 Not quite right...";
+    return "❌ Keep trying!";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -152,7 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 outputTextDiv.textContent = decryptedText;
                 const feedback = giveFeedback(decryptedText);
                 const encryptShift = (26 - key) % 26;
-                crackShiftDisplay.textContent = `Trying Encrypt Shift: ${encryptShift}, Decrypt Shift: -${key} → ${feedback}`;                updateWheelRotation(key);
+                crackShiftDisplay.textContent = `Trying Encrypt Shift: ${encryptShift}, Decrypt Shift: -${key} → ${feedback}`;
+                updateWheelRotation(key);
                 await delay(300);
             }
             crackShiftDisplay.textContent = "Cracking finished.";
@@ -258,4 +259,40 @@ document.addEventListener('DOMContentLoaded', () => {
     updateWheelRotation(shiftValueInput.value);
     crackShiftDisplay.textContent = '(Shift Tried: -)';
     outputTextDiv.textContent = '(Output will appear here)';
+
+    // ✅ Add draggable wheel
+    let isDragging = false;
+    let startAngle = 0;
+    let currentRotation = 0;
+
+    const svg = document.getElementById('cipherWheel');
+
+    innerWheelGroup.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startAngle = getMouseAngle(e) - currentRotation;
+    });
+
+    svg.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const angle = getMouseAngle(e);
+        currentRotation = angle - startAngle;
+        innerWheelGroup.style.transform = `rotate(${currentRotation}deg)`;
+    });
+
+    svg.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    svg.addEventListener('mouseleave', () => {
+        isDragging = false;
+    });
+
+    function getMouseAngle(e) {
+        const rect = svg.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const x = e.clientX - centerX;
+        const y = e.clientY - centerY;
+        return Math.atan2(y, x) * (180 / Math.PI);
+    }
 });
