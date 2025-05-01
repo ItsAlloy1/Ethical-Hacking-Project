@@ -98,7 +98,9 @@ body {
     background-color: #0056b3;
 }
 
+/* Make .output-area take full width */
 .output-area {
+    grid-column: 1 / -1; /* span full grid width */
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 5px;
@@ -108,9 +110,10 @@ body {
     align-items: center;
 }
 
-.result-text label {
-    font-weight: bold;
-    margin-right: 5px;
+#cipherWheelContainer {
+    margin-bottom: 20px;
+    width: 400px;
+    height: 400px;
 }
 
 #outputText {

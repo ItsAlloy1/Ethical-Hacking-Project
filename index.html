@@ -41,28 +41,28 @@
       <div class="output-area">
         <h2>Cipher Visualization / Crack Attempt</h2>
         <div id="cipherWheelContainer">
-          <svg id="cipherWheel" width="350" height="350" viewBox="0 0 350 350">
-            <circle cx="175" cy="175" r="140" fill="none" stroke="#eee" stroke-width="1"/>
-            <defs>
-              <path id="outerCirclePath" d="M 175, 175 m -125, 0 a 125,125 0 1,1 250,0 a 125,125 0 1,1 -250,0" fill="none"/>
-            </defs>
-            <text id="outerText" font-size="16" font-family="monospace">
-              <textPath xlink:href="#outerCirclePath" textLength="780" lengthAdjust="spacingAndGlyphs">
-                ABCDEFGHIJKLMNOPQRSTUVWXYZ
-              </textPath>
-            </text>
-            <g id="innerWheelGroup">
-              <circle cx="175" cy="175" r="100" fill="none" stroke="#eee" stroke-width="1"/>
-              <defs>
-                <path id="innerCirclePath" d="M 175, 175 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none"/>
-              </defs>
-              <text id="innerText" font-size="16" font-family="monospace">
-                <textPath xlink:href="#innerCirclePath" textLength="530" lengthAdjust="spacingAndGlyphs">
-                  abcdefghijklmnopqrstuvwxyz
-                </textPath>
-              </text>
-            </g>
-          </svg>
+            <svg id="cipherWheel" width="400" height="400" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="170" fill="none" stroke="#eee" stroke-width="1"/>
+                <defs>
+                  <path id="outerCirclePath" d="M 200, 200 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" fill="none"/>
+                </defs>
+                <text id="outerText" font-size="16" font-family="monospace">
+                  <textPath xlink:href="#outerCirclePath" textLength="880" lengthAdjust="spacingAndGlyphs">
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                  </textPath>
+                </text>
+                <g id="innerWheelGroup">
+                  <circle cx="200" cy="200" r="120" fill="none" stroke="#eee" stroke-width="1"/>
+                  <defs>
+                    <path id="innerCirclePath" d="M 200, 200 m -120, 0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="none"/>
+                  </defs>
+                  <text id="innerText" font-size="16" font-family="monospace">
+                    <textPath xlink:href="#innerCirclePath" textLength="700" lengthAdjust="spacingAndGlyphs">
+                      abcdefghijklmnopqrstuvwxyz
+                    </textPath>
+                  </text>
+                </g>
+              </svg>
         </div>
 
         <div class="result-text">
