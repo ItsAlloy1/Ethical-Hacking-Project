@@ -33,7 +33,7 @@ function giveFeedback(userAttempt) {
     const cleanedAnswer = currentChallenge.replace(/[^A-Za-z]/gi, '').toUpperCase();
 
     if (cleanedAttempt === cleanedAnswer) {
-        return "🎉 You cracked it!";
+        return "You cracked it!";
     }
 
     let matchCount = 0;
