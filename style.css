@@ -1,4 +1,3 @@
-/* Base styles (reuse previous relevant ones) */
 body {
     font-family: sans-serif;
     display: flex;
@@ -6,39 +5,39 @@ body {
     align-items: start;
     padding: 20px;
     background-color: #f4f7f6;
-  }
-  
-  .cipher-lab {
+}
+
+.cipher-lab {
     background-color: #fff;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 800px;
-  }
-  
-  .header {
+}
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
-  }
-  
-  .header h1 {
+}
+
+.header h1 {
     margin: 0;
     font-size: 1.5em;
-  }
-  
-  .main-content {
+}
+
+.main-content {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 30px;
     align-items: start;
-  }
-  
-  .input-params-area {
+}
+
+.input-params-area {
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 5px;
@@ -46,45 +45,45 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-  
-  .input-group label {
+}
+
+.input-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-  }
-  
-  .input-group input[type="text"],
-  .input-group input[type="number"] {
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"] {
     width: calc(100% - 12px);
     padding: 8px 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .shift-control {
+}
+
+.shift-control {
     display: flex;
     align-items: center;
-  }
-  
-  .shift-control input[type="number"] {
+}
+
+.shift-control input[type="number"] {
     text-align: center;
     width: 50px;
     margin: 0 5px;
     -moz-appearance: textfield;
-  }
-  
-  .shift-control input[type="number"]::-webkit-outer-spin-button,
-  .shift-control input[type="number"]::-webkit-inner-spin-button {
+}
+
+.shift-control input[type="number"]::-webkit-outer-spin-button,
+.shift-control input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-  
-  .shift-control button {
+}
+
+.shift-control button {
     padding: 5px 10px;
-  }
-  
-  #applyButton {
+}
+
+#applyButton {
     padding: 10px 15px;
     background-color: #007bff;
     color: white;
@@ -93,13 +92,13 @@ body {
     cursor: pointer;
     transition: background-color 0.2s;
     margin-top: 10px;
-  }
-  
-  #applyButton:hover {
+}
+
+#applyButton:hover {
     background-color: #0056b3;
-  }
-  
-  .output-area {
+}
+
+.output-area {
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 5px;
@@ -107,14 +106,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .result-text label {
+}
+
+.result-text label {
     font-weight: bold;
     margin-right: 5px;
-  }
-  
-  #outputText {
+}
+
+#outputText {
     margin-top: 5px;
     font-family: monospace;
     font-size: 1.2em;
@@ -124,119 +123,95 @@ body {
     min-height: 1.5em;
     text-align: center;
     word-wrap: break-word;
-  }
-  
-  /* Wheel specific styles */
-  #cipherWheelContainer {
+}
+
+#cipherWheelContainer {
     margin-bottom: 20px;
-    width: 300px;
-    height: 300px;
-  }
-  
-  #cipherWheel {
+    width: 350px;
+    height: 350px;
+}
+
+#cipherWheel {
     display: block;
     width: 100%;
     height: 100%;
     overflow: visible;
-  }
-  
-  #outerText textPath,
-  #innerText textPath {
-    letter-spacing: 7px; /* Adjust this value until text fits */
-  }
-  
-  /* Color Styling */
-  #outerText {
+}
+
+/* ✅ REMOVE letter-spacing conflict */
+#outerText textPath,
+#innerText textPath {
+    /* letter-spacing: 7px; */
+}
+
+#outerText {
     fill: blue;
     font-weight: bold;
-  }
-  
-  #innerText {
+}
+
+#innerText {
     fill: red;
-  }
-  
-  /* Rotation Styling */
-  #innerWheelGroup {
+}
+
+#innerWheelGroup {
     transform-origin: center;
     transition: transform 0.4s ease-in-out;
-  }
-  
-  /* Media Query for responsiveness */
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .main-content {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
     .output-area {
-      margin-top: 20px;
+        margin-top: 20px;
     }
-  }
-  
-  /* Crack button style */
-  #crackButton {
+}
+
+#crackButton, #freqCrackButton, #generateChallengeButton {
     padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#crackButton {
     background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 10px;
-    margin-left: 5px;
-  }
-  
-  #crackButton:hover {
+}
+
+#crackButton:hover {
     background-color: #c82333;
-  }
-  
-  /* Frequency Crack Button - New */
-  #freqCrackButton {
-    padding: 10px 15px;
+}
+
+#freqCrackButton {
     background-color: #17a2b8;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 10px;
-    margin-left: 5px;
-  }
-  
-  #freqCrackButton:hover {
+}
+
+#freqCrackButton:hover {
     background-color: #138496;
-  }
-  
-  #freqCrackButton:disabled {
+}
+
+#freqCrackButton:disabled,
+#applyButton:disabled,
+#crackButton:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-  }
-  
-  /* Disabled Buttons */
-  #applyButton:disabled,
-  #crackButton:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  #generateChallengeButton {
-    padding: 10px 15px;
+}
+
+#generateChallengeButton {
     background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 10px;
-  }
-  
-  #generateChallengeButton:hover {
+}
+
+#generateChallengeButton:hover {
     background-color: #218838;
-  }
-  
-  /* Chart container */
-  canvas#frequencyChart {
+}
+
+canvas#frequencyChart {
     margin-top: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
+}

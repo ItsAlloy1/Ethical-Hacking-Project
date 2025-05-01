@@ -41,21 +41,25 @@
       <div class="output-area">
         <h2>Cipher Visualization / Crack Attempt</h2>
         <div id="cipherWheelContainer">
-          <svg id="cipherWheel" width="300" height="300" viewBox="0 0 300 300">
-            <circle cx="150" cy="150" r="140" fill="none" stroke="#eee" stroke-width="1"/>
+          <svg id="cipherWheel" width="350" height="350" viewBox="0 0 350 350">
+            <circle cx="175" cy="175" r="140" fill="none" stroke="#eee" stroke-width="1"/>
             <defs>
-              <path id="outerCirclePath" d="M 150, 150 m -125, 0 a 125,125 0 1,1 250,0 a 125,125 0 1,1 -250,0" fill="none"/>
+              <path id="outerCirclePath" d="M 175, 175 m -125, 0 a 125,125 0 1,1 250,0 a 125,125 0 1,1 -250,0" fill="none"/>
             </defs>
             <text id="outerText" font-size="16" font-family="monospace">
-              <textPath xlink:href="#outerCirclePath">ABCDEFGHIJKLMNOPQRSTUVWXYZ</textPath>
+              <textPath xlink:href="#outerCirclePath" textLength="780" lengthAdjust="spacingAndGlyphs">
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ
+              </textPath>
             </text>
             <g id="innerWheelGroup">
-              <circle cx="150" cy="150" r="100" fill="none" stroke="#eee" stroke-width="1"/>
+              <circle cx="175" cy="175" r="100" fill="none" stroke="#eee" stroke-width="1"/>
               <defs>
-                <path id="innerCirclePath" d="M 150, 150 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" fill="none"/>
+                <path id="innerCirclePath" d="M 175, 175 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none"/>
               </defs>
               <text id="innerText" font-size="16" font-family="monospace">
-                <textPath xlink:href="#innerCirclePath">abcdefghijklmnopqrstuvwxyz</textPath>
+                <textPath xlink:href="#innerCirclePath" textLength="530" lengthAdjust="spacingAndGlyphs">
+                  abcdefghijklmnopqrstuvwxyz
+                </textPath>
               </text>
             </g>
           </svg>
