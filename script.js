@@ -6,6 +6,8 @@ const ENGLISH_LETTER_FREQUENCIES = {
     U: 2.76, V: 0.98, W: 2.36, X: 0.15, Y: 1.97, Z: 0.07
 };
 
+let currentChallenge = null;
+
 function caesarCipher(text, shift, preserveCase = true) {
     shift = parseInt(shift) % 26;
     const effectiveShift = (shift < 0) ? (shift + 26) : shift;
@@ -22,6 +24,30 @@ function caesarCipher(text, shift, preserveCase = true) {
         }
     }
     return result;
+}
+
+function giveFeedback(userAttempt) {
+    if (!currentChallenge) return "";
+
+    const cleanedAttempt = userAttempt.replace(/[^A-Za-z]/gi, '').toUpperCase();
+    const cleanedAnswer = currentChallenge.replace(/[^A-Za-z]/gi, '').toUpperCase();
+
+    if (cleanedAttempt === cleanedAnswer) {
+        return "🎉 You cracked it!";
+    }
+
+    let matchCount = 0;
+    for (let i = 0; i < Math.min(cleanedAttempt.length, cleanedAnswer.length); i++) {
+        if (cleanedAttempt[i] === cleanedAnswer[i]) {
+            matchCount++;
+        }
+    }
+
+    const accuracy = matchCount / cleanedAnswer.length;
+
+    if (accuracy > 0.7) return "You're getting close!";
+    if (accuracy > 0.4) return "Not quite right...";
+    return "Keep trying!";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -123,8 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             for (let key = 1; key <= 25; key++) {
                 const decryptedText = caesarCipher(textToCrack, -key, preserveCaseCheckbox.checked);
-                crackShiftDisplay.textContent = `Trying Encryption Key: ${key} (Decrypt Shift: -${key})`;
                 outputTextDiv.textContent = decryptedText;
+                const feedback = giveFeedback(decryptedText);
+                crackShiftDisplay.textContent = `Trying Encryption Key: ${key} → ${feedback}`;
                 updateWheelRotation(key);
                 await delay(300);
             }
@@ -163,7 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const decryptedText = caesarCipher(text, -guessedShift, preserveCaseCheckbox.checked);
 
         outputTextDiv.textContent = decryptedText;
-        crackShiftDisplay.textContent = `Guessed Shift: -${guessedShift} (Assuming '${mostFrequentLetter}' = 'E')`;
+        const feedback = giveFeedback(decryptedText);
+        crackShiftDisplay.textContent = `Guessed Shift: -${guessedShift} → ${feedback}`;
         updateWheelRotation(guessedShift);
         renderFrequencyChart(text);
     }
@@ -175,7 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNaN(shift)) return alert("Enter valid shift.");
         const result = caesarCipher(text, shift, preserveCaseCheckbox.checked);
         outputTextDiv.textContent = result;
-        crackShiftDisplay.textContent = `(Applied Shift: ${shift})`;
+        const feedback = giveFeedback(result);
+        crackShiftDisplay.textContent = `(Applied Shift: ${shift}) → ${feedback}`;
         updateWheelRotation(shift);
         renderFrequencyChart(result);
     });
@@ -221,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         shiftValueInput.value = 0;
         crackShiftDisplay.textContent = `Challenge generated. Try cracking it!`;
         outputTextDiv.textContent = "(Try to decrypt this...)";
+        currentChallenge = randomPhrase;
         updateWheelRotation(0);
         renderFrequencyChart(encrypted);
     });
