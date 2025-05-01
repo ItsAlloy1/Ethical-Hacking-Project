@@ -151,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const decryptedText = caesarCipher(textToCrack, -key, preserveCaseCheckbox.checked);
                 outputTextDiv.textContent = decryptedText;
                 const feedback = giveFeedback(decryptedText);
-                crackShiftDisplay.textContent = `Trying Encryption Key: ${key} → ${feedback}`;
-                updateWheelRotation(key);
+                const encryptShift = (26 - key) % 26;
+                crackShiftDisplay.textContent = `Trying Encrypt Shift: ${encryptShift}, Decrypt Shift: -${key} → ${feedback}`;                updateWheelRotation(key);
                 await delay(300);
             }
             crackShiftDisplay.textContent = "Cracking finished.";
