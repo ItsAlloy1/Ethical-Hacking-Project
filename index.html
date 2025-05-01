@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caesar Cipher Wheel</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="cipher-lab">
+    <header class="header">
+      <h1>Caesar Cipher Wheel</h1>
+      <select id="cipherType" style="display: none;">
+        <option value="caesar" selected>Caesar Cipher</option>
+      </select>
+    </header>
+
+    <main class="main-content">
+      <div class="input-params-area">
+        <div class="input-group">
+          <label for="inputText">Input (Ciphertext to Crack):</label>
+          <input type="text" id="inputText" placeholder="Enter text (e.g., KHOOR)" />
+        </div>
+        <div class="input-group" id="caesarParams">
+          <label for="shiftValue">Shift (for Encrypt):</label>
+          <div class="shift-control">
+            <button id="shiftDown">←</button>
+            <input type="number" id="shiftValue" value="3" min="-25" max="25" />
+            <button id="shiftUp">→</button>
+            <input type="checkbox" id="preserveCaseCheckbox" checked />
+            <label for="preserveCaseCheckbox">Preserve letter case</label>
+          </div>
+        </div>
+        <button id="applyButton">Apply Cipher</button>
+        <button id="crackButton">Try Cracking</button>
+        <button id="generateChallengeButton">Generate Random Cipher</button>
+        <button id="freqCrackButton">Crack by Frequency</button>
+      </div>
+
+      <div class="output-area">
+        <h2>Cipher Visualization / Crack Attempt</h2>
+        <div id="cipherWheelContainer">
+          <svg id="cipherWheel" width="300" height="300" viewBox="0 0 300 300">
+            <circle cx="150" cy="150" r="140" fill="none" stroke="#eee" stroke-width="1"/>
+            <defs>
+              <path id="outerCirclePath" d="M 150, 150 m -125, 0 a 125,125 0 1,1 250,0 a 125,125 0 1,1 -250,0" fill="none"/>
+            </defs>
+            <text id="outerText" font-size="16" font-family="monospace">
+              <textPath xlink:href="#outerCirclePath">ABCDEFGHIJKLMNOPQRSTUVWXYZ</textPath>
+            </text>
+            <g id="innerWheelGroup">
+              <circle cx="150" cy="150" r="100" fill="none" stroke="#eee" stroke-width="1"/>
+              <defs>
+                <path id="innerCirclePath" d="M 150, 150 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" fill="none"/>
+              </defs>
+              <text id="innerText" font-size="16" font-family="monospace">
+                <textPath xlink:href="#innerCirclePath">abcdefghijklmnopqrstuvwxyz</textPath>
+              </text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="result-text">
+          <label for="outputText">Result / Crack Attempt:</label>
+          <div id="crackShiftDisplay" style="font-size: 0.8em; margin-bottom: 5px; min-height: 1.1em;">(Shift Tried: -)</div>
+          <div id="outputText">(Output will appear here)</div>
+          <button id="copyButton" style="margin-top: 10px;">Copy to Clipboard</button>
+        </div>
+      </div>
+
+      <h3>Frequency Analysis</h3>
+      <canvas id="frequencyChart" width="500" height="300"></canvas>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
